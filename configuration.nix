@@ -39,11 +39,14 @@
     containers = {
       cosmos = {
         autoStart = true;
-        image = "mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest";
+        image = "mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:mongodb";
         ports = [
           "8081:8081"
           "10250-10255:10250-10255"
         ];
+        environment = {
+          AZURE_COSMOS_EMULATOR_ENABLE_MONGODB_ENDPOINT = "4.0";
+        };
       };
     };
   };
