@@ -1,21 +1,20 @@
 // obtain json data used by the data table
 async function getList() {
     try {
-        const response = await fetch(
+        const resp = await fetch(
             "/api/users",
             {
                 method: "GET",
             },
         );
 
-        if (!response.ok) {
-            throw new Error(`Fetch list fail, ${response.status}`);
+        if (!resp.ok) {
+            return new Response('Fetch list fail', { status: 400 });
         }
-        const data = await response.json();
+        const data = await resp.json();
         return data;
-    }
-    catch(error) {
-        console.log(error);
+    } catch(err) {
+        return new Response('List JSON fail', { status: 400 });
     }
 }
 
