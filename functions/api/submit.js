@@ -7,6 +7,7 @@ export async function onRequestPost(context) {
     // Convert FormData to JSON
     // NOTE: Allows multiple values per key
     let output = {};
+/**************************
     for (let [key, value] of input) {
       let tmp = output[key];
       if (tmp === undefined) {
@@ -14,7 +15,11 @@ export async function onRequestPost(context) {
       } else {
         output[key] = [].concat(tmp, value);
       }
-    }
+    }*/
+
+    output["title"] = input["title"];
+    output["description"] = input["description"];
+    output["url"] = input["url"];
 
     let data = JSON.stringify(output);
     // submit input to our mongo backed api
